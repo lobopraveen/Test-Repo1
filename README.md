@@ -1,3 +1,5 @@
+![travis build status](https://travis-ci.org/lobopraveen/test-repo1.svg?branch=master)
+
 Created this for some hands-on maintaining a repo!
 
 i need this back in.
