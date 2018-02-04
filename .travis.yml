@@ -29,9 +29,9 @@ script:
 after_success:
   - mv file4.txt t2/file4.txt
   - git stash
-  - git checkout master
+  - git checkout $TRAVIS_BRANCH
   - git stash pop
   - git add -A
   - git commit -m "Travis for $TRAVIS_COMMIT_MESSAGE. [skip ci]"
-  - git remote set-url origin git@github.com:lobopraveen/test-repo1.git
+#  - git remote set-url origin git@github.com:lobopraveen/test-repo1.git
   - git push origin
