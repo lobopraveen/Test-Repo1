@@ -10,9 +10,9 @@ before_install:
   -in travis_blog_rsa.enc -out travis_blog_rsa -d
 
 install:
-  mv t2/file4.txt file4.txt
-  go get github.com/spf13/hugo
-  mv file4.txt t2/file4.txt
+- mv t2/file4.txt file4.txt
+- go get github.com/spf13/hugo
+- mv file4.txt t2/file4.txt
 
 script:
   - hugo
