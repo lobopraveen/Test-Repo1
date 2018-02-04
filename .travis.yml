@@ -20,11 +20,9 @@ before_install:
 install:
 - mv t2/file4.txt file4.txt
 #- go get github.com/spf13/hugo
-- cat file4.txt
 
 script:
-- cat file4.txt
-- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE >> file4.txt
+- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE ". [skip ci]">> file4.txt
 - cat file4.txt
 - git status
 
