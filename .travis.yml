@@ -21,11 +21,11 @@ script:
 - cat t2/file4.txt
 - pwd  >> t2/file4.txt
 - ls -l  >> t2/file4.txt
-
+- rm -f travis_blog_rsa
+- git status
 
 after_success:
   - git status
   - git add *
   - git commit -m "travis for: $TRAVIS_COMMIT_MESSAGE"
   - git push origin
-  
