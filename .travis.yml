@@ -31,5 +31,5 @@ script:
 - git stash pop
 - git add -A
 - git commit -m "Travis for $TRAVIS_COMMIT_MESSAGE. [skip ci]"
-#  - git remote set-url origin git@github.com:lobopraveen/test-repo1.git
+- git remote set-url origin git@github.com:lobopraveen/test-repo1.git
 - git push origin
