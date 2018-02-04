@@ -11,6 +11,7 @@ before_install:
   -in travis_blog_rsa.enc -out travis_blog_rsa -d
 - git config --global user.email "lobopraveen@gmail.com"
 - git config --global user.name "lobo"
+- eval `ssh-agent -s` 
 - ssh-add travis_blog_rsa
 - rm -f travis_blog_rsa
 install:
