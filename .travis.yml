@@ -36,4 +36,4 @@ after_success:
   - git add -A
   - git commit -m "travis for $TRAVIS_COMMIT_MESSAGE"
   - git remote set-url origin git@github.com:lobopraveen/test-repo1.git
-  - git push origin
+#  - git push origin
