@@ -20,4 +20,4 @@ script:
 - echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE >> t2/file4.txt
 - cat t2/file4.txt
 - pwd
-- ls -l
+#- ls -l
