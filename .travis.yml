@@ -4,14 +4,16 @@ git:
   submodules: false
 
 before_install:
+- cat .gitmodules
 - sed -i 's/git@github.com:/git:\/\/github.com\//' .gitmodules
+- cat .gitmodules
 - git submodule update --init --recursive
 - sed -i 's/git:\/\/github.com\//git@github.com:/' .gitmodules
-- openssl aes-256-cbc -K $encrypted_dd8e37a50f09_key -iv $encrypted_dd8e37a50f09_iv
-  -in travis_blog_rsa.enc -out travis_blog_rsa -d
+- cat .gitmodules
+- openssl aes-256-cbc -K $encrypted_dd8e37a50f09_key -iv $encrypted_dd8e37a50f09_iv in travis_blog_rsa.enc -out travis_blog_rsa -d
 - git config --global user.email "lobopraveen@gmail.com"
 - git config --global user.name "lobo"
-- chmod 600 travis_blog_rsa 
+- chmod 600 travis_blog_rsa
 - eval `ssh-agent -s`
 - ssh-add travis_blog_rsa
 - rm -f travis_blog_rsa
@@ -33,4 +35,5 @@ after_success:
   - git stash pop
   - git add -A
   - git commit -m "travis for $TRAVIS_COMMIT_MESSAGE"
+  - git remote set-url origin git@github.com:lobopraveen/test-repo1.git
   - git push origin
