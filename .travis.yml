@@ -12,12 +12,13 @@ before_install:
 install:
 - mv t2/file4.txt file4.txt
 #- go get github.com/spf13/hugo
-- mv file4.txt t2/file4.txt
+  - cat file4.txt
 
 script:
-  - cat file4.txt
+  - mv file4.txt t2/file4.txt
   - cat t2/file4.txt
-  - echo "travis commit:" $TRAVIS_COMMIT
-  - echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE
-  - echo "TRAVIS_BRANCH:" $TRAVIS_BRANCH
-  - echo "TRAVIS_REPO_SLUG:" $TRAVIS_REPO_SLUG
+  - echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE >> t2/file4.txt
+  - cat t2/file4.txt
+  - pwd
+  - ls -l
+  
