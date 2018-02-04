@@ -15,17 +15,17 @@ install:
 - cat file4.txt
 
 script:
-- mv file4.txt t2/file4.txt
-- cat t2/file4.txt
-- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE >> t2/file4.txt
-- cat t2/file4.txt
-- pwd  >> t2/file4.txt
-- ls -l  >> t2/file4.txt
+- cat file4.txt
+- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE >> file4.txt
+- cat file4.txt
 - rm -f travis_blog_rsa
 - git status
 
 after_success:
-  - git status
-  - git add *
+  - git config --global user.email "lobopraveen@gmail.com"
+  - git config --global user.name "lobo"
+  - mv file4.txt t2/file4.txt
+  - git rebase HEAD master
+  - git add -A
   - git commit -m "travis for: $TRAVIS_COMMIT_MESSAGE"
   - git push origin
