@@ -20,20 +20,16 @@ before_install:
 install:
 - mv t2/file4.txt file4.txt
 #- go get github.com/spf13/hugo
-- cat file4.txt
 
 script:
-- cat file4.txt
-- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE >> file4.txt
+- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE ". [skip ci]">> file4.txt
 - cat file4.txt
 - git status
-
-after_success:
-  - mv file4.txt t2/file4.txt
-  - git stash
-  - git checkout master
-  - git stash pop
-  - git add -A
-  - git commit -m "Travis for $TRAVIS_COMMIT_MESSAGE. [skip ci]"
-  - git remote set-url origin git@github.com:lobopraveen/test-repo1.git
-  - git push origin
+- mv file4.txt t2/file4.txt
+- git stash
+- git checkout $TRAVIS_BRANCH
+- git stash pop
+- git add -A
+- git commit -m "Travis for $TRAVIS_COMMIT_MESSAGE. [skip ci]"
+- git remote set-url origin git@github.com:lobopraveen/test-repo1.git
+- git push origin
