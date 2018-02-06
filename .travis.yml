@@ -4,28 +4,28 @@ git:
   submodules: false
 
 before_install:
-- cat .gitmodules
-- sed -i 's/git@github.com:/git:\/\/github.com\//' .gitmodules
-- cat .gitmodules
-- git submodule update --init --recursive
-- sed -i 's/git:\/\/github.com\//git@github.com:/' .gitmodules
-- cat .gitmodules
-- openssl aes-256-cbc -K $encrypted_dd8e37a50f09_key -iv $encrypted_dd8e37a50f09_iv -in travis_blog_rsa.enc -out travis_blog_rsa -d
+#- cat .gitmodules
+#- sed -i 's/git@github.com:/git:\/\/github.com\//' .gitmodules
+#- cat .gitmodules
+#- git submodule update --init --recursive
+#- sed -i 's/git:\/\/github.com\//git@github.com:/' .gitmodules
+#- cat .gitmodules
+- openssl aes-256-cbc -K $encrypted_dd8e37a50f09_key -iv $encrypted_dd8e37a50f09_iv -in travis_repo1_rsa.enc -out travis_repo1_rsa -d
+- chmod 600 travis_repo1_rsa
+- eval `ssh-agent -s`
+- ssh-add travis_repo1_rsa
+- rm -f travis_repo1_rsa
 - git config --global user.email "lobopraveen@gmail.com"
 - git config --global user.name "lobo"
-- chmod 600 travis_blog_rsa
-- eval `ssh-agent -s`
-- ssh-add travis_blog_rsa
-- rm -f travis_blog_rsa
-install:
-- mv t2/file4.txt file4.txt
+#install:
+#- mv t2/file4.txt file4.txt
 #- go get github.com/spf13/hugo
 
 script:
-- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE ". [skip ci]">> file4.txt
-- cat file4.txt
+- echo "travis commit message:" $TRAVIS_COMMIT_MESSAGE ". [skip ci]">> t2/file4.txt
+- cat t2/file4.txt
 - git status
-- mv file4.txt t2/file4.txt
+#- mv file4.txt t2/file4.txt
 - git stash
 - git checkout $TRAVIS_BRANCH
 - git stash pop
