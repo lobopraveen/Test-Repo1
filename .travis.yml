@@ -17,7 +17,7 @@ before_install:
 - rm -f travis_repo1_rsa
 - git config --global user.email "lobopraveen@gmail.com"
 - git config --global user.name "lobo"
-#install:
+install:
 #- mv t2/file4.txt file4.txt
 #- go get github.com/spf13/hugo
 
