@@ -18,6 +18,7 @@ before_install:
 - git config --global user.email "lobopraveen@gmail.com"
 - git config --global user.name "lobo"
 install:
+- echo "nothing to do here."
 #- mv t2/file4.txt file4.txt
 #- go get github.com/spf13/hugo
 
